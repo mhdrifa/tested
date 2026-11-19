@@ -613,6 +613,68 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape') clos
 // broken or blocked product images fall back to the brand placeholder, so the product is still shown
 document.addEventListener('error', function (e) { var t = e.target; if (t && t.tagName === 'IMG' && !t.dataset.fb) { t.dataset.fb = '1'; t.src = PH; } }, true);
 window.addEventListener('hashchange', route);
+
+/* BLACK BRAND — Automatic Best Sellers Carousel */
+(function initAutoCarousel() {
+  const MOVE_EVERY = 3500; // 3.5 seconds
+  let paused = false;
+
+  // Pause while the customer interacts with the carousel
+  document.addEventListener("pointerover", (event) => {
+    if (event.target.closest("#car")) paused = true;
+  });
+
+  document.addEventListener("pointerout", (event) => {
+    if (event.target.closest("#car") &&
+        !event.relatedTarget?.closest?.("#car")) {
+      paused = false;
+    }
+  });
+
+  document.addEventListener("focusin", (event) => {
+    if (event.target.closest("#car")) paused = true;
+  });
+
+  document.addEventListener("focusout", (event) => {
+    if (event.target.closest("#car")) paused = false;
+  });
+
+  setInterval(() => {
+    const carousel = document.getElementById("car");
+
+    if (
+      !carousel ||
+      paused ||
+      document.hidden ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) return;
+
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+    if (maxScroll <= 0) return;
+
+    // Get the width of one product card
+    const card = carousel.querySelector(".pcard");
+    if (!card) return;
+
+    const gap = parseFloat(getComputedStyle(carousel).gap) || 16;
+    const move = card.getBoundingClientRect().width + gap;
+
+    // Return to the beginning after reaching the last product
+    if (carousel.scrollLeft >= maxScroll - 5) {
+      carousel.scrollTo({
+        left: 0,
+        behavior: "smooth"
+      });
+    } else {
+      carousel.scrollBy({
+        left: move,
+        behavior: "smooth"
+      });
+    }
+  }, MOVE_EVERY);
+})();
+
 $('#yr').textContent = new Date().getFullYear();
 updateCounts();
 catalog().catch(function () { });
