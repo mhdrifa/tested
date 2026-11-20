@@ -64,7 +64,7 @@ async function run() {
    await c.route('https://script.googleusercontent.com/**',mockAPI);
    await c.addInitScript(()=>sessionStorage.setItem('bb_admin_tok','test-token'));
    const p=await c.newPage();p.on('pageerror',e=>errors.push('admin: '+e.message));
-   await p.goto(base+'/admin.html#/settings');
+   await p.goto(base+'/brand-management.html#/settings');
    await p.locator('[data-a="set-new"]').waitFor();
    await p.locator('[data-a="set-new"]').click();
    await p.locator('#mf [name=name]').fill('public.test_note');

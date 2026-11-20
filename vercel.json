@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/admin.html",
+      "source": "/brand-management.html",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
         { "key": "Cache-Control", "value": "no-store" }

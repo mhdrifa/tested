@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
-const pages=['index.html','admin.html','order-confirmation.html'];
+const pages=['index.html','brand-management.html','order-confirmation.html'];
 let count=0;
 for(const file of pages){
  const text=fs.readFileSync(path.join(root,file),'utf8');

@@ -1,6 +1,6 @@
 # BLACK BRAND — storefront + admin (static front end + Google Apps Script backend)
 
-Files: `index.html` (storefront, hash-routed), `admin.html` (admin), `order-confirmation.html` (payment return shim),
+Files: `index.html` (storefront, hash-routed), `brand-management.html` (admin), `order-confirmation.html` (payment return shim),
 `css/`, `js/config.js` (API URL, audit URL, Firebase config), `js/api.js`, `js/store.js`, `js/admin.js`, backend `Code.gs`.
 
 ## Run locally (do NOT open via file://)
@@ -9,7 +9,7 @@ Browsers block cross-origin requests from file://, so a local server (or any sta
 
 ## Go-live checklist
 1. Deploy `Code.gs` (done) and run `setup()`, `createOwnerAccount()` (see header of Code.gs).
-2. Admin: open `/admin.html`, sign in, set up 2FA, then add: Categories → Shipping rules (REQUIRED, otherwise
+2. Admin: open `/brand-management.html`, sign in, set up 2FA, then add: Categories → Shipping rules (REQUIRED, otherwise
    checkout shows "delivery unavailable") → Products with variants → Banners/Collections/Coupons.
 3. Store Settings: set `public.site_url` (e.g. https://yourdomain.com), bank transfer instructions, etc.
 4. Customer login: create a Firebase project (Authentication → Email/Password), paste its web config into
