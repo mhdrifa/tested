@@ -491,3 +491,44 @@ nav.main a,nav.main button{white-space:nowrap}
 @media(prefers-reduced-motion:reduce){
   .pcard,.pcard img,.arrows button{animation:none!important;transition:none!important}
 }
+
+/* BLACK BRAND — editorial full-screen mobile navigation */
+.mobile-menu-header,.mobile-menu-footer,.shop-expand{display:none}
+@media(max-width:900px){
+  nav.main{
+    width:100vw;max-width:none;inset:0;height:100dvh;bottom:auto;
+    padding:calc(20px + env(safe-area-inset-top)) 26px calc(28px + env(safe-area-inset-bottom));
+    background:#f7f5f0;box-shadow:none;overflow-y:auto;gap:0;
+    -webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  }
+  nav.main.open{display:flex}
+  nav.main .mobile-menu-header{display:flex;align-items:center;min-height:76px;flex:none;border-bottom:1px solid #dcd8d0;margin-bottom:20px}
+  .mobile-menu-wordmark{font-size:19px;font-weight:700;line-height:1.2;letter-spacing:.08em;color:#171717}
+  .mobile-menu-wordmark small{display:block;margin-top:6px;color:#887e70;font-size:9px;font-weight:500;letter-spacing:.21em}
+  nav.main .drawer-close{top:calc(27px + env(safe-area-inset-top));right:21px;border:0;width:44px;height:44px;font-size:30px;font-weight:300;color:#171717;z-index:2}
+  nav.main > a,nav.main > .dd > a{
+    color:#201f1d;font-size:21px;font-weight:500;line-height:1.25;letter-spacing:.005em;
+    text-transform:none;padding:16px 0;border-bottom:1px solid #e2ded6;
+  }
+  nav.main > a.on,nav.main > a:hover,nav.main > .dd > a:hover{color:#171717}
+  nav.main > .dd{position:relative;display:grid;grid-template-columns:1fr 48px;border-bottom:1px solid #e2ded6}
+  nav.main > .dd > a{border:0;display:block;align-self:center}
+  nav.main .shop-expand{display:grid;place-items:center;border:0;background:transparent;font-size:26px;font-weight:300;color:#60594f;padding:0;min-height:54px;cursor:pointer}
+  nav.main .dd-menu{display:none;position:static;grid-column:1/-1;min-width:0;padding:0 0 12px 15px;background:transparent;border:0;box-shadow:none}
+  nav.main .dd.mobile-expanded .dd-menu{display:block}
+  nav.main .dd-menu a{font-size:13px;font-weight:500;letter-spacing:.055em;text-transform:uppercase;color:#77716a;padding:13px 8px;border:0;white-space:normal}
+  nav.main .dd-menu a:hover{background:transparent;color:#171717}
+  nav.main > .sale{color:#8f3733}
+  nav.main .sale::after{width:5px;height:5px;margin-left:8px}
+  nav.main .mobile-menu-footer{display:flex;flex-direction:column;gap:7px;flex:none;padding-top:26px;margin-top:auto;color:#8b795e;font-size:10px;font-weight:600;letter-spacing:.16em}
+  nav.main .mobile-menu-footer small{font-size:11px;letter-spacing:0;font-weight:400;color:#7c7771}
+  .drawer-bg.open{background:rgba(0,0,0,.35)}
+}
+@media(max-width:400px){
+  nav.main{padding-left:22px;padding-right:22px}
+  nav.main > a,nav.main > .dd > a{font-size:19px;padding-top:13px;padding-bottom:13px}
+}
+@media(prefers-reduced-motion:no-preference){
+  @media(max-width:900px){nav.main.open{animation:bb-menu-in .24s ease-out both}}
+  @keyframes bb-menu-in{from{opacity:.7;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+}

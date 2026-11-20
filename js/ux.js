@@ -14,6 +14,25 @@
 
   // storefront: close button inside the mobile drawer
   var nav = q('#nav');
+  if (nav) {
+    var brandHeader = document.createElement('div');
+    brandHeader.className = 'mobile-menu-header';
+    brandHeader.innerHTML = '<span class="mobile-menu-wordmark">BLACK BRAND<small>DEFINE YOUR STYLE</small></span>';
+    nav.insertBefore(brandHeader, nav.firstChild);
+    var menuFooter = document.createElement('div');
+    menuFooter.className = 'mobile-menu-footer';
+    menuFooter.innerHTML = '<span>BLACK BRAND · SRI LANKA</span><small>Considered style, everyday confidence.</small>';
+    nav.appendChild(menuFooter);
+    var toggle = nav.querySelector('.shop-expand');
+    var shop = nav.querySelector('.dd');
+    if (toggle && shop) toggle.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      var expanded = shop.classList.toggle('mobile-expanded');
+      toggle.setAttribute('aria-expanded', String(expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Collapse shop categories' : 'Expand shop categories');
+      toggle.textContent = expanded ? '−' : '+';
+    });
+  }
   if (nav && !nav.querySelector('.drawer-close')) {
     var x = document.createElement('button'); x.className = 'drawer-close'; x.type = 'button';
     x.setAttribute('aria-label', 'Close menu'); x.setAttribute('data-action', 'menu'); x.textContent = '×';

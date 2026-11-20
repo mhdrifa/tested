@@ -76,7 +76,7 @@
 
       <nav class="main" id="nav" aria-label="Primary">
         <a href="#/" data-nav="home">HOME</a>
-        <div class="dd"><a href="#/shop" data-nav="shop">SHOP ▾</a><div class="dd-menu" id="shopMenu"><a href="#/shop">All Products</a></div></div>
+        <div class="dd"><a href="#/shop" data-nav="shop">SHOP</a><button class="shop-expand" type="button" aria-label="Expand shop categories" aria-controls="shopMenu" aria-expanded="false">+</button><div class="dd-menu" id="shopMenu"><a href="#/shop">All Products</a></div></div>
         <a href="#/new-arrivals" data-nav="new">NEW ARRIVALS</a>
         <a href="#/best-sellers" data-nav="best">BEST SELLERS</a>
         <a href="#/collections" data-nav="collections">COLLECTIONS</a>
@@ -86,7 +86,6 @@
     </div>
 
     <div class="tools">
-      <a class="portal" href="">PORTAL</a>
       <button class="ibtn" data-action="search" aria-label="Search catalogue"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
       <a class="ibtn" href="#/wishlist" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-9-9.2C1.8 7.5 3.6 4 7 4c2 0 3.4 1 5 3 1.6-2 3-3 5-3 3.4 0 5.2 3.5 4 6.8C19 15.4 12 20 12 20z"/></svg><span class="badge" id="wishCount">0</span></a>
       <a class="ibtn" href="#/cart" aria-label="Shopping bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg><span class="badge gold" id="cartCount">0</span></a>
