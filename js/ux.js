@@ -32,11 +32,32 @@
       toggle.setAttribute('aria-label', expanded ? 'Collapse shop categories' : 'Expand shop categories');
       toggle.textContent = expanded ? '−' : '+';
     });
+    function syncSelected() {
+      var current = window.location.hash || '#/';
+      nav.querySelectorAll('a[href^="#/"]').forEach(function (link) {
+        link.classList.toggle('mobile-selected', link.getAttribute('href') === current);
+        if (link.classList.contains('mobile-selected')) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+    }
+    nav.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href^="#/"]');
+      if (link) { nav.querySelectorAll('a').forEach(function (a) { a.classList.remove('mobile-selected'); }); link.classList.add('mobile-selected'); }
+    });
+    window.addEventListener('hashchange', syncSelected);
+    syncSelected();
   }
   if (nav && !nav.querySelector('.drawer-close')) {
     var x = document.createElement('button'); x.className = 'drawer-close'; x.type = 'button';
-    x.setAttribute('aria-label', 'Close menu'); x.setAttribute('data-action', 'menu'); x.textContent = '×';
-    nav.insertBefore(x, nav.firstChild);
+    x.setAttribute('aria-label', 'Close menu'); x.textContent = '×';
+    var head = nav.querySelector('.mobile-menu-header');
+    if (head) head.appendChild(x); else nav.insertBefore(x, nav.firstChild);
+    x.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      nav.classList.remove('open');
+      var backdrop = q('#drawerBg'); if (backdrop) backdrop.classList.remove('open');
+      sync();
+    });
     nav.addEventListener('click', function (e) { if (e.target.closest('a')) { nav.classList.remove('open'); var d = q('#drawerBg'); if (d) d.classList.remove('open'); } });
   }
   // click outside the dialog closes it

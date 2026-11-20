@@ -502,10 +502,10 @@ nav.main a,nav.main button{white-space:nowrap}
     -webkit-overflow-scrolling:touch;overscroll-behavior:contain;
   }
   nav.main.open{display:flex}
-  nav.main .mobile-menu-header{display:flex;align-items:center;min-height:76px;flex:none;border-bottom:1px solid #dcd8d0;margin-bottom:20px}
+  nav.main .mobile-menu-header{display:flex;align-items:center;justify-content:space-between;min-height:76px;flex:none;border-bottom:1px solid #dcd8d0;margin-bottom:20px;position:relative}
   .mobile-menu-wordmark{font-size:19px;font-weight:700;line-height:1.2;letter-spacing:.08em;color:#171717}
   .mobile-menu-wordmark small{display:block;margin-top:6px;color:#887e70;font-size:9px;font-weight:500;letter-spacing:.21em}
-  nav.main .drawer-close{top:calc(27px + env(safe-area-inset-top));right:21px;border:0;width:44px;height:44px;font-size:30px;font-weight:300;color:#171717;z-index:2}
+  nav.main .mobile-menu-header .drawer-close{display:grid;position:static;inset:auto;flex:none;place-items:center;background:transparent;border:1px solid #ccc6bc;border-radius:50%;width:42px;height:42px;padding:0;font-size:25px;font-weight:300;color:#171717;line-height:1;z-index:2}
   nav.main > a,nav.main > .dd > a{
     color:#201f1d;font-size:21px;font-weight:500;line-height:1.25;letter-spacing:.005em;
     text-transform:none;padding:16px 0;border-bottom:1px solid #e2ded6;
@@ -519,6 +519,10 @@ nav.main a,nav.main button{white-space:nowrap}
   nav.main .dd-menu a{font-size:13px;font-weight:500;letter-spacing:.055em;text-transform:uppercase;color:#77716a;padding:13px 8px;border:0;white-space:normal}
   nav.main .dd-menu a:hover{background:transparent;color:#171717}
   nav.main > .sale{color:#8f3733}
+  nav.main > a.mobile-selected{background:#161616;color:#fff!important;border-color:#161616;padding-left:17px;padding-right:14px;margin-left:-17px;margin-right:-14px}
+  nav.main > .dd > a.mobile-selected{color:#111!important;font-weight:700}
+  nav.main .dd-menu a.mobile-selected{background:#171717;color:#fff!important;border-radius:2px;padding-left:14px}
+  nav.main .shop-expand:focus-visible,nav.main .drawer-close:focus-visible{outline:2px solid #a48759;outline-offset:2px}
   nav.main .sale::after{width:5px;height:5px;margin-left:8px}
   nav.main .mobile-menu-footer{display:flex;flex-direction:column;gap:7px;flex:none;padding-top:26px;margin-top:auto;color:#8b795e;font-size:10px;font-weight:600;letter-spacing:.16em}
   nav.main .mobile-menu-footer small{font-size:11px;letter-spacing:0;font-weight:400;color:#7c7771}
